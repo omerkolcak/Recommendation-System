@@ -15,8 +15,10 @@ feature engineering. Single emebedding vector can be thought as (1xm) feature ve
 * Learn item embedding matrix V(nxd) where i th row is the item embedding of the i th item and d is the embedding dimension.
 * Finally, feedback matrix A can be factorized as A = U*V<sup>T</sup>
 
-In this project, I conduct my experiments with a simple model based collaborative filtering. There 2 embedding layers for users and movies with a dimension of 64. In order to make a prediction, cosine similarity between user and movie embeddings are calculated. Normally, cosine similarity is between -1 and 1, since this is a classification task values are scaled to 0 and 1. If the similarity between the user and the movie embedding is close 1, that means user will like the particular movie. Log loss is used as optimization objective. Model is trained with a learning rate of 0.5 for 5 epochs. Below figure shows the training metrics and auc of the test set. <br/>
+In this project, I conduct my experiments with a simple model based collaborative filtering. There 2 embedding layers for users and movies with a dimension of 64. In order to make a prediction, cosine similarity between user and movie embeddings are calculated. Normally, cosine similarity is between -1 and 1, since this is a classification task values are scaled to 0 and 1. If the similarity between the user and the movie embedding is close to 1, that means user will like the particular movie. Log loss is used as optimization objective. Model is trained with a learning rate of 0.5 for 5 epochs. Below figure shows the training metrics and auc of the test set. <br/>
 
 ![alt text for screen readers](images/cf-loss.png "Loss")
 ![alt text for screen readers](images/cf-auc.png "AUC")
+
+AUC score is calculated as 0.81 which is not that bad. 
 ## DeepFM

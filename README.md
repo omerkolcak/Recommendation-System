@@ -12,8 +12,8 @@ feature engineering. Single emebedding vector can be thought as (1xm) feature ve
 
 **Model Based:** Model based approach tries to fill the empty cells of the feedback matrix A(mxn) where m is the number of users and n is the number of items. They rely on matrix factorization.
 * Learn user embedding matrix U(mxd) where i th row is the user embedding of the i th user.
-* Learn item embedding matrix V(nxd) where i th row is the item embedding of the i th item.
-Feedback matrix A can be factorized as U*V<sup>T</sup> </br>
+* Learn item embedding matrix V(nxd) where i th row is the item embedding of the i th item. <br/>
+Feedback matrix A can be factorized as U*V<sup>T</sup> <br/>
 
 In this project, I conduct my experiments with a simple model based collaborative filtering.
 ## DeepFM

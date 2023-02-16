@@ -7,6 +7,7 @@ MovieLens dataset is used for movie recommendation task. Dataset contains 1 mill
 ## Collaborative Filtering
 Collaborative filtering uses the similarities between users and items to provide recommendations. It learns users and movie embeddings, so that there is no need to manual
 feature engineering. Emebeddings can be thought as (1xm) feature vectors where m is hyperparameter of the model. Collaborative filtering is classified into 2 categories as memory-based and model-based. <br/>
-**Memory Based:** Memory based approach relies on similarity measures(cosine similarity, euclidean distance, jaccard similarity, etc.). For example, if we have a huge sparse matrix that has the users as rows and item ratings as columns. Similar users can be detected from the matrix by calculating similarity, and items can be recommended between the similar users. 
+
+**Memory Based:** Memory based approach relies on similarity measures(cosine similarity, euclidean distance, jaccard similarity, etc.). For example, if we have a huge sparse matrix that has the users as rows and item ratings as columns. Similar users can be detected from the matrix by calculating similarity, and items can be recommended between the similar users.  <br/>
 **Model Based:** 
 ## DeepFM

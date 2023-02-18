@@ -22,3 +22,14 @@ In this project, I conduct my experiments with a simple model based collaborativ
 
 AUC score is calculated as 0.81 which is not that bad. 
 ## DeepFM
+DeepFM arhitecture is developed after the [Wide & Deep](https://arxiv.org/pdf/1606.07792.pdf) model which is proposed by Google. Wide & Deep model arhitecture is shown in the below figure. <br/>
+
+![alt text for screen readers](images/wide-and-deep-architecture.png "Wide & Deep Architecture")
+
+It consist of 2 different parts as wide and deep. Wide and deep part of the network are jointly trained. Deep part is a simple feed forward neural network where the low dimensional dense embeddings of the features are learned. Deep part aims to capture the generalization. Generalization is the idea of exploring the new feature combinations that are never or rarely occured in the past. Wide part is a simple linear model. It aims to capture the memorization. Memorization is the idea of exploiting the correlation available in the historical data. The feature set of wide part consists of raw feature vectors and transformed feature vectors. The most important transformations is cross-product transformation. An example of cross-product transformation for a movie recommendation system can be given as AND(gender=male,like=Godfather). These transformations requires overwhelming feature engineering and domain expertise. This is the time when DeepFM comes to play, and it eliminates the manual feature engineering.
+
+DeepFM model architecture is shown in the below figure. <br/>
+
+![alt text for screen readers](images/deepfm-architecture.png "DeepFM Architecture")
+
+## Further Improvement

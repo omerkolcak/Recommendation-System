@@ -26,10 +26,23 @@ DeepFM arhitecture is developed after the [Wide & Deep](https://arxiv.org/pdf/16
 
 ![alt text for screen readers](images/wide-and-deep-architecture.png "Wide & Deep Architecture")
 
-It consist of 2 different parts as wide and deep. Wide and deep part of the network are jointly trained. Deep part is a simple feed forward neural network where the low dimensional dense embeddings of the features are learned. Deep part aims to capture the generalization. Generalization is the idea of exploring the new feature combinations that are never or rarely occured in the past. Wide part is a simple linear model. It aims to capture the memorization. Memorization is the idea of exploiting the correlation available in the historical data. The feature set of wide part consists of raw feature vectors and transformed feature vectors. The most important transformations is cross-product transformation. An example of cross-product transformation for a movie recommendation system can be given as AND(gender=male,like=Godfather). These transformations requires overwhelming feature engineering and domain expertise. This is the time when DeepFM comes to play, and it eliminates the manual feature engineering.
+It consist of 2 different parts as wide and deep. Wide and deep part of the network are jointly trained. Deep part is a simple feed forward neural network where the low dimensional dense embeddings of the features are learned. Deep part aims to capture the generalization. Generalization is the idea of exploring the new feature combinations that are never or rarely occured in the past. Wide part is a simple linear model. It aims to capture the memorization. Memorization is the idea of exploiting the correlation available in the historical data. The feature set of wide part consists of raw feature vectors and transformed feature vectors. The most important transformations is cross-product transformation. An example of cross-product transformation for a movie recommendation system can be given as AND(gender=male,like=Godfather). These transformations require overwhelming feature engineering and domain expertise. This is the time when DeepFM comes to play, and it eliminates the manual feature engineering.
 
 DeepFM model architecture is shown in the below figure. <br/>
 
 ![alt text for screen readers](images/deepfm-architecture.png "DeepFM Architecture")
 
+As can be seen from the arhictecture, FM(wide) and deep part of the network shares the same input vector and embedding vector. Deep part of the architecture is straight forward dnn with embedding layers which compress highly sparse and super high dimensional feature vector into low dimension. After that these low dimensional feature vectors are fed through the later hidden layers. Deep part learns the high order feature interactions. FM part is a [factorization machines](https://cseweb.ucsd.edu//classes/fa17/cse291-b/reading/Rendle2010FM.pdf) that learns linear interactions and pairwise interactions as an inner product of feature latent vector. Deep and FM part of the model shares the same feature embeddings which brings huge befits such as;
+* It can learn high and low feature from raw features
+* There is no need manual feature engineering and domain expertise <br/>
+
+In order to train the model, I used [deepctr](https://github.com/shenweichen/DeepCTR) library. DNN architecture is set as (256,128,64) number of neurons each layer. Embedding dimension of the features is set to 16, and L2 regularization terms for embedding and dnn layer are set as 0.0001. Model is trained for 13 epochs with a learning rate of 0.001. The below figure depicts the training and validation metrics. <br/>
+
+![alt text for screen readers](images/deepfm-loss.png "Loss")
+
+Also, AUC score is calculated as 0.82 on the test set which is not that significant amount of improvement compared to the Collaborative Filtering model. <br/> 
+
+![alt text for screen readers](images/deepfm-auc.png "AUC")
+
 ## Further Improvement
+If we look at the academia, the best performing models are the ones enhanced with knowledge-based graphs. Knowledge-based recommender systems utilizes the explicit information about the item, user etc. The following works are the examples of knowledge based grahs [KNI](https://arxiv.org/pdf/1908.04032v2.pdf), [RippleNet](https://arxiv.org/pdf/1803.03467v4.pdf), [MKR](https://arxiv.org/pdf/1901.08907v1.pdf). In order to get more accurate results, it is very promising to integrate the knowledge based graphs into the recommender systems. 
